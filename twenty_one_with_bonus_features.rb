@@ -9,7 +9,7 @@ def greetings
   puts '************************************************************'
   sleep 2
   puts ''
-  puts 'First player to win five rounds wins the game.'
+  puts 'First player to win five rounds wins the game.'.center(60)
   sleep 3
 end
 
@@ -73,15 +73,15 @@ def declare_round_winner(player_total, dealer_total)
 
   case result
   when :player_busted
-    puts 'Player busted! Dealer wins!'
+    puts 'Player busted! Dealer wins this round!'
   when :dealer_busted
-    puts 'Dealer busted! Player wins!'
+    puts 'Dealer busted! Player wins this round!'
   when :player
-    puts 'Player wins!'
+    puts 'Player wins this round!'
   when :dealer
-    puts 'Dealer wins!'
+    puts 'Dealer wins this round!'
   else
-    puts "It's a tie!"
+    puts "It's a tie on this round!"
   end
 end
 
