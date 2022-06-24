@@ -156,6 +156,7 @@ def reset!(round_state)
   round_state[:rounds] = 1
   round_state[:player] = 0
   round_state[:dealer] = 0
+  round_state[:ties] = 0
 end
 
 def increment_rounds!(round_state)
@@ -238,7 +239,7 @@ loop do
     dealer_cards << deck.pop
     dealer_total = total(dealer_cards)
     puts "Dealer cards are now: #{string_of_hand(dealer_cards)}"
-    sleep 3.5
+    sleep 2
   end
 
   if busted?(dealer_total) # when dealer_total > 21
