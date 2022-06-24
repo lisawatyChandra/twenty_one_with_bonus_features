@@ -2,14 +2,14 @@ SUITS = %w(♥ ♦ ♣ ♠)
 VALUES = %w(2 3 4 5 6 7 8 9 10 J Q K A)
 
 def greetings
-  puts "************************************************************"
+  puts '************************************************************'
   puts ''
-  puts "Welcome to Twenty-One".center(60)
+  puts 'Welcome to Twenty-One'.center(60)
   puts ''
-  puts "************************************************************"
+  puts '************************************************************'
   sleep 2
   puts ''
-  puts "First player to win five rounds wins the game."
+  puts 'First player to win five rounds wins the game.'
   sleep 3
 end
 
@@ -73,24 +73,24 @@ def declare_round_winner(player_total, dealer_total)
 
   case result
   when :player_busted
-    puts "Player busted! Dealer wins!"
+    puts 'Player busted! Dealer wins!'
   when :dealer_busted
-    puts "Dealer busted! Player wins!"
+    puts 'Dealer busted! Player wins!'
   when :player
-    puts "Player wins!"
+    puts 'Player wins!'
   when :dealer
-    puts "Dealer wins!"
+    puts 'Dealer wins!'
   else
     puts "It's a tie!"
   end
 end
 
 def play_again?
-  puts "************************************************************"
+  puts '************************************************************'
   puts ''
   puts 'Would you like to play again? (y or n)'.center(60)
   puts ''
-  puts "************************************************************"
+  puts '************************************************************'
   answer = gets.chomp
   sleep 0.25
   answer.downcase.start_with?('y')
@@ -118,7 +118,7 @@ end
 
 def display_scoreboard(round_state)
   puts ''
-  puts "************************************************************"
+  puts '************************************************************'
   puts ''
   puts "Round #{round_state[:rounds]} scores: "
     .concat("PLAYER - #{round_state[:player]}, ")
@@ -126,7 +126,7 @@ def display_scoreboard(round_state)
     .concat("TIES - #{round_state[:ties]}")
     .center(60)
   puts ''
-  puts "************************************************************"
+  puts '************************************************************'
 end
 
 def display_end_of_round_results(player_cards, dealer_cards, player_total,
@@ -163,19 +163,19 @@ def increment_rounds!(round_state)
 end
 
 def enter_to_continue
-  puts "Press Enter to continue: "
+  puts 'Press Enter to continue: '
   gets
 end
 
 round_state = { rounds: 1, player: 0, dealer: 0, ties: 0 }
 round_winner = nil
 
-greetings()
+greetings
 
 # main loop
 loop do
   system 'clear'
-  deck = initialize_deck!()
+  deck = initialize_deck!
   player_cards = []
   dealer_cards = []
 
@@ -190,17 +190,17 @@ loop do
   # player turn
   puts ''
   loop do
-    puts "Player turn..."
+    puts 'Player turn...'
     player_turn = nil
     loop do
-      puts "Would you like to (h)it or (s)tay?"
+      puts 'Would you like to (h)it or (s)tay?'
       player_turn = gets.chomp.downcase
       break if ['h', 's'].include?(player_turn)
       puts "Sorry, must enter 'h' or 's'"
     end
 
     if player_turn == 'h'
-      puts "You chose to hit!"
+      puts 'You chose to hit!'
       player_cards << deck.pop
       player_total = total(player_cards)
       puts "player cards are now: #{string_of_hand(player_cards)}"
@@ -222,7 +222,7 @@ loop do
       play_again? ? next : break
     else
       increment_rounds!(round_state)
-      enter_to_continue()
+      enter_to_continue
       next
     end
   else # when player_total <= 21
@@ -233,8 +233,8 @@ loop do
   puts ''
   loop do
     break if dealer_total >= 17
-    puts "Dealer turn..."
-    puts "Dealer hits!"
+    puts 'Dealer turn...'
+    puts 'Dealer hits!'
     dealer_cards << deck.pop
     dealer_total = total(dealer_cards)
     puts "Dealer cards are now: #{string_of_hand(dealer_cards)}"
@@ -254,7 +254,7 @@ loop do
       play_again? ? next : break
     else
       increment_rounds!(round_state)
-      enter_to_continue()
+      enter_to_continue
       next
     end
   else # when dealer_total >= 17 && dealer_total <= 21
@@ -274,9 +274,9 @@ loop do
     break unless play_again?
   else
     increment_rounds!(round_state)
-    enter_to_continue()
+    enter_to_continue
   end
 end
 
 puts ''
-puts "Thank you for playing Twenty-One. Goodbye!"
+puts 'Thank you for playing Twenty-One. Goodbye!'
