@@ -185,8 +185,8 @@ loop do
   player_total = total(player_cards)
   dealer_total = total(dealer_cards)
 
-  puts "player cards: #{player_cards[0].join}, #{player_cards[1].join}"
-  puts "dealer_cards: #{dealer_cards[0].join} and ?"
+  puts "player has: #{player_cards[0].join}, #{player_cards[1].join}"
+  puts "dealer has: #{dealer_cards[0].join} and ?"
 
   # player turn
   puts ''
