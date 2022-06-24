@@ -13,7 +13,7 @@ def greetings
   sleep 3
 end
 
-def initialize_deck
+def initialize_deck!
   SUITS.product(VALUES).shuffle
 end
 
@@ -179,7 +179,7 @@ loop do
   player_cards = []
   dealer_cards = []
 
-  deal_initial_cards(deck, player_cards, dealer_cards)
+  deal_initial_cards!(deck, player_cards, dealer_cards)
 
   player_total = total(player_cards)
   dealer_total = total(dealer_cards)
